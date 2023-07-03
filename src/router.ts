@@ -16,15 +16,18 @@ export const router = Router();
 // ----- CATEGORY
 router.get('/categories', listCategories);
 router.post('/categories', createCategory);
+//not ok
 router.delete('/categories/:categoryId', deleteCategory);
 
 // ----- PRODUCTS
 router.get('/products', listProducts);
+//not ok
 router.post('/products', createProducts);
 router.get('/products/:orderId/products', getProductsByCategory);
 
 // ----- ORDERS
 router.get('/orders', listOrders);
+//not ok
 router.post('/orders', createOrders);
 router.patch('/orders/:orderId', changeOrderStatus);
 router.delete('/orders/:orderId', cancelOrder);

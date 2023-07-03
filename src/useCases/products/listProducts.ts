@@ -2,7 +2,11 @@ import { Request, Response } from 'express';
 import { Product } from '../../app/Product';
 
 export async function listProducts(req: Request, res: Response) {
-  const products = await Product.find();
+  try {
+    const products = await Product.find();
 
-  res.json(products);
+    return res.json(products);
+  } catch {
+    return res.sendStatus(500);
+  }
 }
