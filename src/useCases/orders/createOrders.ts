@@ -3,14 +3,14 @@ import { Order } from '../../app/Order';
 
 export async function createOrders(req: Request, res: Response) {
   try {
-    const { name, icon } = req.body;
+    const { table, products } = req.body;
 
-    const product = await Order.create({
-      name,
-      icon,
+    const order = await Order.create({
+      table,
+      products,
     });
 
-    return res.status(201).json(product);
+    return res.status(201).json(order);
   } catch {
     return res.sendStatus(500);
   }

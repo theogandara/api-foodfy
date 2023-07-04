@@ -3,11 +3,16 @@ import { Product } from '../../app/Product';
 
 export async function createProducts(req: Request, res: Response) {
   try {
-    const { name, icon } = req.body;
+    const imagePath = req.file?.filename;
+    const { name, description, price, category, ingredients } = req.body;
 
     const product = await Product.create({
       name,
-      icon,
+      description,
+      price: Number(price),
+      category,
+      ingredients: ingredients ? JSON.parse(ingredients) : [],
+      imagePath,
     });
 
     return res.status(201).json(product);
